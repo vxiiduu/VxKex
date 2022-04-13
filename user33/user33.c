@@ -302,6 +302,19 @@ WINUSERAPI BOOL WINAPI PhysicalToLogicalPointForPerMonitorDPI(
 	return PhysicalToLogicalPoint(hWnd, lpPoint);
 }
 
+WINUSERAPI HPOWERNOTIFY WINAPI RegisterSuspendResumeNotification(
+	IN	HANDLE	hRecipient,
+	IN	DWORD	Flags)
+{
+	return NULL;
+}
+
+WINUSERAPI BOOL WINAPI UnregisterSuspendResumeNotification(
+	IN OUT	HPOWERNOTIFY	Handle)
+{
+	return FALSE;
+}
+
 WINUSERAPI HHOOK WINAPI PROXY_FUNCTION(SetWindowsHookExW) (
 	IN	INT			idHook,
 	IN	HOOKPROC	lpfn,
