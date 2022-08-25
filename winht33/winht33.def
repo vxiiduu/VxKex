@@ -1,0 +1,6 @@
+LIBRARY winht33
+EXPORTS
+	WinHttpWebSocketClose
+	WinHttpWebSocketReceive
+	WinHttpWebSocketSend
+	WinHttpWebSocketCompleteUpgrade

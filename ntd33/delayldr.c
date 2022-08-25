@@ -17,3 +17,19 @@ PVOID WINAPI LdrResolveDelayLoadedAPI(
 	ODS_ENTRY(L"(%p, %p, %p, %p, %p, %I32u)", ParentModuleBase, DelayloadDescriptor, FailureDllHook, FailureSystemHook, ThunkAddress, Flags);
 	return NULL;
 }
+
+void __fastfail(unsigned int code);
+
+NTSTATUS WINAPI LdrGetDllFullName(HMODULE DllHandle, UNICODE_STRING *FileName)
+{
+	GetModuleFileNameW(DllHandle, FileName->Buffer, FileName->Length);
+	switch(GetLastError()) {
+	case 0x7E:
+		return 0xC0000135;
+		break;
+	case 0x7A:
+		return 0xC000002;
+		break;
+	}
+	return 0x00000000;
+}
